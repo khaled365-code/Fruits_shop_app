@@ -10,6 +10,7 @@ void main()
   Future.delayed(const Duration(seconds: 3), () {
 
   });
+  //My first comment with github
   FlutterNativeSplash.remove();
   runApp(const FruitsApp());
 }
