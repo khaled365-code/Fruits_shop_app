@@ -27,9 +27,15 @@ class _SplashViewState extends State<SplashView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+                
             children: [
-              SvgPicture.asset(ImageConstants.treeSplash),
+              isArabic(context: context)==true?
+              SvgPicture.asset(ImageConstants.treeSplash):
+              Transform(
+                transform: Matrix4.rotationY(1.57),
+                child: SvgPicture.asset(ImageConstants.treeSplash),
+                ),
             ],
           ),
           SvgPicture.asset(

@@ -31,11 +31,16 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
-  flutter_native_splash: ^2.4.1 
+  flutter_bloc: ^8.1.6
+  flutter_localizations:
+    sdk: flutter
+  flutter_native_splash: ^2.4.1
+  get_it: ^8.0.1
+  shared_preferences: ^2.3.2
   svg_flutter: ^0.0.1
 
 dev_dependencies:
-  flutter_launcher_icons: ^ 0.13.1
+  flutter_launcher_icons: ^0.14.1
   flutter_test:
     sdk: flutter
 
@@ -89,3 +94,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_intl:
+  enabled: true
