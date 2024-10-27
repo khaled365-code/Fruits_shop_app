@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
+import 'package:fruits_e_commerce_app/core/utils/text_styles.dart';
 
 class SharedButton extends StatelessWidget {
   const SharedButton(
@@ -25,7 +26,7 @@ class SharedButton extends StatelessWidget {
         onPressed: onButtonPressed,
         child: Text(
           buttonText,
-          style: TextStyle(color: AppColors.white),
+          style: TextStyles.bold16.copyWith(color: AppColors.white),
         ));
   }
 }

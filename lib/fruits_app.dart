@@ -17,9 +17,12 @@ class FruitsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => serviceLocator<LocalizationCubit>(),
-      child: BlocBuilder<LocalizationCubit,LocalizationState>(
+      child: BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
           return MaterialApp(
+            theme: ThemeData(
+              fontFamily: 'Cairo',
+            ),
             localizationsDelegates: const [
               AppLocalizationDelegate(),
               GlobalMaterialLocalizations.delegate,
@@ -36,9 +39,10 @@ class FruitsApp extends StatelessWidget {
               }
               return supportedLocales.first;
             },
-            locale: Locale(CacheHelper().getData(key: AppKeys.appCurrentLanguage)==null?
-            LocalizationCubit.get(context).currentLanguage:
-            CacheHelper().getData(key: AppKeys.appCurrentLanguage)),
+            locale: Locale(
+                CacheHelper().getData(key: AppKeys.appCurrentLanguage) == null
+                    ? LocalizationCubit.get(context).currentLanguage
+                    : CacheHelper().getData(key: AppKeys.appCurrentLanguage)),
             debugShowCheckedModeBanner: false,
             initialRoute: Routes.splashScreen,
             onGenerateRoute: AppRouter.onGenerateRoutes,

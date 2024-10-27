@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/app_keys.dart';
+import 'package:fruits_e_commerce_app/core/cache/cache_helper.dart';
+import 'package:fruits_e_commerce_app/core/commons/helper_functions.dart';
+import 'package:fruits_e_commerce_app/core/router/routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
+import 'package:fruits_e_commerce_app/core/utils/text_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/shared_button.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/data/models/onbarding_data_model.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/presentation/widgets/dot_containers_row.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/presentation/widgets/page_view_section.dart';
 
-class OnboardingView extends StatefulWidget 
-{
+class OnboardingView extends StatefulWidget {
   OnboardingView({super.key});
 
   @override
@@ -31,8 +36,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   }
 
   @override
-  void dispose() 
-  {
+  void dispose() {
     pageViewController.dispose();
     super.dispose();
   }
@@ -41,28 +45,38 @@ class _OnboardingViewState extends State<OnboardingView> {
     OnboardingDataModel(
         backImage: ImageConstants.bananaBackImage,
         mainImage: ImageConstants.fruitsDishImage,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-           children: 
-           [
-          Text(' مرحبًا بك في '),
-          Text('HUB'),
-          Text('Fruit'),
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(
+            ' مرحبًا بك في ',
+            style: TextStyles.bold23.copyWith(color: AppColors.c0C0D0D),
+          ),
+          Text(
+            'HUB',
+            style: TextStyles.bold23.copyWith(color: AppColors.secondaryColor),
+          ),
+          Text(
+            'Fruit',
+            style: TextStyles.bold23.copyWith(color: AppColors.primaryColor),
+          ),
         ]),
-        subTitle: 'اكتشف تجربة تسوق فريدة مع FruitHUB.\n'
-            'استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة\n'
+        subTitle: 'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف\n'
+            'مجموعتنا الواسعة من الفواكه الطازجة الممتازة\n'
             'واحصل على أفضل العروض والجودة العالية'),
     OnboardingDataModel(
         backImage: ImageConstants.ananasBackgroundImage,
         mainImage: ImageConstants.ananasImage,
-        title: Text('ابحث وتسوق'),
-        subTitle: 'نقدم لك أفضل الفواكه المختارة بعناية طلع على.\n'
+        title: Text(
+          'ابحث وتسوق',
+          style: TextStyles.bold23.copyWith(color: AppColors.c0C0D0D),
+        ),
+        subTitle: 'نقدم لك أفضل الفواكه المختارة بعناية. طلع على\n'
             'التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة\n'
-            'المثالية.'),
+            'المثالية'),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -78,7 +92,17 @@ class _OnboardingViewState extends State<OnboardingView> {
             SizedBox(height: currentPage == 0 ? 125.5 : 29),
             currentPage == 0
                 ? SizedBox.shrink()
-                : SharedButton(onButtonPressed: () {}, buttonText: 'ابدأ الان'),
+                : SharedButton(
+                    onButtonPressed: () async
+                     {
+                      await CacheHelper().saveData(
+                          key: AppKeys.appOnboradingSeenDone, value: true);
+                      navigate(
+                          context: context,
+                          route: Routes.loginScreen,
+                          replacement: true);
+                    },
+                    buttonText: 'ابدأ الان'),
             currentPage == 1
                 ? SizedBox(
                     height: 43,

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/app_keys.dart';
+import 'package:fruits_e_commerce_app/core/cache/cache_helper.dart';
+import 'package:fruits_e_commerce_app/core/commons/helper_functions.dart';
+import 'package:fruits_e_commerce_app/core/router/routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
+import 'package:fruits_e_commerce_app/core/utils/text_styles.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/data/models/onbarding_data_model.dart';
 
 class PageViewContent extends StatelessWidget {
@@ -34,7 +39,18 @@ class PageViewContent extends StatelessWidget {
             currentPage == 0
                 ? Padding(
                     padding: EdgeInsetsDirectional.only(start: 20, top: 30),
-                    child: Text('تخط'),
+                    child: GestureDetector(
+                      onTap: () async
+                      {
+                         await CacheHelper().saveData(key: AppKeys.appOnboradingSeenDone, value: true);
+                         navigate(context: context, route: Routes.loginScreen,replacement: true);
+                      },
+                      child: Text(
+                        'تخط',
+                        style: TextStyles.regular13
+                            .copyWith(color: AppColors.c949D9E),
+                      ),
+                    ),
                   )
                 : SizedBox.shrink()
           ],
@@ -46,7 +62,13 @@ class PageViewContent extends StatelessWidget {
         SizedBox(
           height: 24,
         ),
-        Text(onboardingDataModel.subTitle),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 37),
+          child: Text(
+            onboardingDataModel.subTitle,
+            style: TextStyles.semiBold13.copyWith(color: AppColors.c4E5556),
+          ),
+        ),
       ],
     );
   }
