@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_e_commerce_app/core/injection/injector.dart';
 import 'package:fruits_e_commerce_app/core/router/routes.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/cubit/login_cubit_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentation/views/splash_view.dart';
@@ -19,13 +22,15 @@ class AppRouter {
 
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (context) => LoginView(),
-        );      
+          builder: (context) => BlocProvider(
+            create: (context) => serviceLocator<LoginCubit>(),
+            child: LoginView(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(
-          builder: (context) => 
-          Scaffold(
+          builder: (context) => Scaffold(
             body: Center(
               child: Text('No route found'),
             ),

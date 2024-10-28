@@ -12,6 +12,11 @@ class ImageConstants
   static const String treeSplash = 'assets/icons/splash_logo_icon.svg';
   static const String pointsSplashIcon = 'assets/icons/points_splash_icon.svg';
   static const String splashLogo = 'assets/icons/tree_splash_icon.svg';
+  static const String appBackButtonIcon = 'assets/icons/app_back_button_icon.svg';
+  static const String eyeVisabilityIcon = 'assets/icons/eye_visability_icon.svg'; 
+  static const String  googleIcon = 'assets/icons/google_icon.svg'; 
+  static const String  appleIcon = 'assets/icons/apple_icon.svg'; 
+  static const String  facebookIcon = 'assets/icons/facebook_icon.svg'; 
 
 
 

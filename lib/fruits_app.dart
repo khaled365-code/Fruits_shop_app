@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_e_commerce_app/core/app_keys.dart';
 import 'package:fruits_e_commerce_app/core/cache/cache_helper.dart';
 import 'package:fruits_e_commerce_app/core/injection/injector.dart';
@@ -19,33 +20,37 @@ class FruitsApp extends StatelessWidget {
       create: (context) => serviceLocator<LocalizationCubit>(),
       child: BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
-          return MaterialApp(
-            theme: ThemeData(
-              fontFamily: 'Cairo',
-            ),
-            localizationsDelegates: const [
-              AppLocalizationDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: AppLocalization.supportedLocales,
-            localeResolutionCallback: (deviceLocale, supportedLocales) {
-              for (var locale in supportedLocales) {
-                if (deviceLocale != null &&
-                    deviceLocale.languageCode == locale.languageCode) {
-                  return deviceLocale;
+          return ScreenUtilInit(
+            designSize: const Size(375, 812),
+            builder: (context, child) =>
+              MaterialApp(
+              theme: ThemeData(
+                fontFamily: 'Cairo',
+              ),
+              localizationsDelegates: const [
+                AppLocalizationDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalization.supportedLocales,
+              localeResolutionCallback: (deviceLocale, supportedLocales) {
+                for (var locale in supportedLocales) {
+                  if (deviceLocale != null &&
+                      deviceLocale.languageCode == locale.languageCode) {
+                    return deviceLocale;
+                  }
                 }
-              }
-              return supportedLocales.first;
-            },
-            locale: Locale(
-                CacheHelper().getData(key: AppKeys.appCurrentLanguage) == null
-                    ? LocalizationCubit.get(context).currentLanguage
-                    : CacheHelper().getData(key: AppKeys.appCurrentLanguage)),
-            debugShowCheckedModeBanner: false,
-            initialRoute: Routes.splashScreen,
-            onGenerateRoute: AppRouter.onGenerateRoutes,
+                return supportedLocales.first;
+              },
+              locale: Locale(
+                  CacheHelper().getData(key: AppKeys.appCurrentLanguage) == null
+                      ? LocalizationCubit.get(context).currentLanguage
+                      : CacheHelper().getData(key: AppKeys.appCurrentLanguage)),
+              debugShowCheckedModeBanner: false,
+              initialRoute: Routes.splashScreen,
+              onGenerateRoute: AppRouter.onGenerateRoutes,
+            ),
           );
         },
       ),
