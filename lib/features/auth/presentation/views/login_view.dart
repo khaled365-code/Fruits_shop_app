@@ -6,11 +6,11 @@ import 'package:fruits_e_commerce_app/core/widgets/fruits_app_bar.dart';
 import 'package:fruits_e_commerce_app/core/widgets/shared_button.dart';
 import 'package:fruits_e_commerce_app/core/widgets/space_widget.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/cubit/login_cubit_cubit.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/dont_have_account_row.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/email_text_field.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login_option_container.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/or_with_dividers_row.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/password_text_field.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/dont_have_account_row.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/email_login_text_field.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/login_option_container.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/or_with_dividers_row.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/password_login_text_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -18,21 +18,20 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.white,
         appBar: buidFruitsAppBar(title: 'تسجيل دخول'),
         body: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsetsDirectional.only(
-                    start: 16.w, end: 16.w, top: 24.h),
+                    start: 16.w, end: 17.w, top: 24.h),
                 child: Column(
                   children: [
-                    EmailTextField(),
+                    EmailLoginTextField(),
                     SpaceWidget(
                       height: 16,
                     ),
-                    PasswordTextField(),
+                    PasswordLoginTextField(),
                     SpaceWidget(
                       height: 16,
                     ),
@@ -47,7 +46,7 @@ class LoginView extends StatelessWidget {
                       ],
                     ),
                     SpaceWidget(
-                      height: 33,
+                      height: 37,
                     ),
                     SharedButton(
                         onButtonPressed: () {}, buttonText: 'تسجيل دخول'),
@@ -56,7 +55,7 @@ class LoginView extends StatelessWidget {
                     ),
                     DontHaveAccountRow(),
                     SpaceWidget(
-                      height: 49,
+                      height: 53,
                     ),
                     OrRowWithDividersWidget(),
                     SpaceWidget(

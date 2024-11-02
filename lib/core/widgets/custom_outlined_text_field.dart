@@ -53,6 +53,9 @@ class CustomOutlinedTextField extends StatelessWidget {
       keyboardType: keyboardType ?? TextInputType.text,
       validator: validator,
       onFieldSubmitted: onFieldSubmitted,
+      style: inputStyle?? TextStyles.semiBold16.copyWith(
+        color: AppColors.c0C0D0D
+      ),
       decoration: InputDecoration(
           hintText: hintText ?? '',
           hintStyle: hintStyle ??

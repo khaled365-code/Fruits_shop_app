@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/app_keys.dart';
 import 'package:fruits_e_commerce_app/core/cache/cache_helper.dart';

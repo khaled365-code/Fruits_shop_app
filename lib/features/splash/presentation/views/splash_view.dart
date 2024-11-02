@@ -56,7 +56,8 @@ class _SplashViewState extends State<SplashView> {
   void getDelayed() 
   {                       
 
-    Future.delayed(Duration(seconds: 10), () {
+    Future.delayed(Duration(seconds: 10), () 
+    {
       var onboardingIsSeen= CacheHelper().getData(key: AppKeys.appOnboradingSeenDone);
      if(onboardingIsSeen==true)
       {

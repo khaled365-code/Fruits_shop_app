@@ -7,6 +7,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/text_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/shared_button.dart';
+import 'package:fruits_e_commerce_app/core/widgets/space_widget.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/data/models/onbarding_data_model.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/presentation/widgets/dot_containers_row.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/presentation/widgets/page_view_section.dart';
@@ -85,16 +86,22 @@ class _OnboardingViewState extends State<OnboardingView> {
               onboardingDataList: onboardingDataList,
               pageViewController: pageViewController,
             ),
-            SizedBox(height: 64),
+            SpaceWidget(height: 64),
             DotContainersRow(
               currentPage: currentPage,
             ),
-            SizedBox(height: currentPage == 0 ? 125.5 : 29),
+            currentPage == 0
+                ? SpaceWidget(
+                    height: 125.5,
+                  )
+                : SpaceWidget(
+                    height: 29,
+                  ),
             currentPage == 0
                 ? SizedBox.shrink()
                 : SharedButton(
-                    onButtonPressed: () async
-                     {
+                    onButtonPressed: () async 
+                    {
                       await CacheHelper().saveData(
                           key: AppKeys.appOnboradingSeenDone, value: true);
                       navigate(
@@ -104,7 +111,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     },
                     buttonText: 'ابدأ الان'),
             currentPage == 1
-                ? SizedBox(
+                ? SpaceWidget(
                     height: 43,
                   )
                 : SizedBox.shrink()

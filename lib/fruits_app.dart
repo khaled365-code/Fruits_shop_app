@@ -9,6 +9,7 @@ import 'package:fruits_e_commerce_app/core/localization/localization_cubit/local
 import 'package:fruits_e_commerce_app/core/router/app_router.dart';
 import 'package:fruits_e_commerce_app/core/router/routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 
 class FruitsApp extends StatelessWidget {
   const FruitsApp({super.key});
@@ -22,11 +23,10 @@ class FruitsApp extends StatelessWidget {
         builder: (context, state) {
           return ScreenUtilInit(
             designSize: const Size(375, 812),
-            builder: (context, child) =>
-              MaterialApp(
+            builder: (context, child) => MaterialApp(
               theme: ThemeData(
-                fontFamily: 'Cairo',
-              ),
+                  fontFamily: 'Cairo',
+                  scaffoldBackgroundColor: AppColors.white),
               localizationsDelegates: const [
                 AppLocalizationDelegate(),
                 GlobalMaterialLocalizations.delegate,

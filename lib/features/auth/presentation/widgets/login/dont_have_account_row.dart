@@ -1,10 +1,11 @@
-
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/commons/helper_functions.dart';
+import 'package:fruits_e_commerce_app/core/router/routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/text_styles.dart';
 
-class DontHaveAccountRow extends StatelessWidget
- {
+class DontHaveAccountRow extends StatelessWidget {
   const DontHaveAccountRow({
     super.key,
   });
@@ -22,9 +23,12 @@ class DontHaveAccountRow extends StatelessWidget
         text: ' ',
       ),
       TextSpan(
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              navigate(context: context, route: Routes.signuScreen);
+            },
           text: 'قم بانشاء حساب',
-          style: TextStyles.semiBold16
-              .copyWith(color: AppColors.primaryColor))
+          style: TextStyles.semiBold16.copyWith(color: AppColors.primaryColor))
     ]));
   }
 }

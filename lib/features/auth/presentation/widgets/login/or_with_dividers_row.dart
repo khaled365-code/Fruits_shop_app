@@ -17,7 +17,7 @@ class OrRowWithDividersWidget extends StatelessWidget {
           child: Container(
             height: 1.h,
             decoration: BoxDecoration(
-              color: AppColors.cE5E7E7,
+              color: AppColors.cDDDFDF,
             ),
           ),
         ),
@@ -32,7 +32,7 @@ class OrRowWithDividersWidget extends StatelessWidget {
           child: Container(
             height: 1.h,
             decoration: BoxDecoration(
-              color: AppColors.cE5E7E7,
+              color: AppColors.cDDDFDF,
             ),
           ),
         ),
