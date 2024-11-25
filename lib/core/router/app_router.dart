@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/injection/injector.dart';
 import 'package:fruits_e_commerce_app/core/router/routes.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/cubit/login_cubit_cubit.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/login_cubit_cubit.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/views/signup_view.dart';
 import 'package:fruits_e_commerce_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentation/views/splash_view.dart';
 
-class AppRouter 
-{
+class AppRouter {
   static Route? onGenerateRoutes(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.splashScreen:
@@ -20,6 +20,7 @@ class AppRouter
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
           builder: (context) => OnboardingView(),
+          settings: routeSettings
         );
 
       case Routes.loginScreen:
@@ -32,8 +33,11 @@ class AppRouter
 
       case Routes.signuScreen:
         return MaterialPageRoute(
-          builder: (context) => SignupView(),
-        );  
+          builder: (context) => BlocProvider(
+            create: (context) => serviceLocator<SignupCubit>(),
+            child: SignupView(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(

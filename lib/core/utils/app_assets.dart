@@ -19,8 +19,10 @@ class ImageConstants {
   static const String appleIcon = 'assets/icons/apple_icon.svg';
   static const String facebookIcon = 'assets/icons/facebook_icon.svg';
   static const String checkTrueIcon = 'assets/icons/check_true_icon.svg';
+  static const String closeErrorIcon = 'assets/icons/close_error_icon.svg';
 
   //lotties
 
   //gif
+
 }

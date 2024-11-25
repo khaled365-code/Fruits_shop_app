@@ -5,7 +5,7 @@ import 'package:fruits_e_commerce_app/core/utils/text_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/fruits_app_bar.dart';
 import 'package:fruits_e_commerce_app/core/widgets/shared_button.dart';
 import 'package:fruits_e_commerce_app/core/widgets/space_widget.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/cubit/login_cubit_cubit.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/login_cubit_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/dont_have_account_row.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/email_login_text_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentation/widgets/login/login_option_container.dart';
@@ -24,7 +24,7 @@ class LoginView extends StatelessWidget {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsetsDirectional.only(
-                    start: 16.w, end: 17.w, top: 24.h),
+                    start: 17.w, end: 16.w, top: 24.h),
                 child: Column(
                   children: [
                     EmailLoginTextField(),
@@ -41,7 +41,7 @@ class LoginView extends StatelessWidget {
                         Text(
                           'نسيت كلمة المرور؟',
                           style: TextStyles.semiBold13
-                              .copyWith(color: AppColors.c2D9F5D),
+                              .copyWith(color: AppColors.lightPrimaryColor),
                         ),
                       ],
                     ),

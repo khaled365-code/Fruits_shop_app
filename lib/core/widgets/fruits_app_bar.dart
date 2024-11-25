@@ -18,5 +18,4 @@ buidFruitsAppBar({required String title})
     ); 
 
 
-
 }

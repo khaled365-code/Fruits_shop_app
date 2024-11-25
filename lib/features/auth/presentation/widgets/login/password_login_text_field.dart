@@ -17,7 +17,7 @@ class PasswordLoginTextField extends StatelessWidget {
       obsecureText: true,
       suffixcon: Padding(
         padding: EdgeInsetsDirectional.only(
-          end: 33.w,
+          end: 31.w,
         ),
         child: Icon(
           Icons.remove_red_eye,

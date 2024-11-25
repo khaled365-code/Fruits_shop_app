@@ -22,7 +22,7 @@ class LoginOptionContainer extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.only(start: 19.w),
+              padding: EdgeInsetsDirectional.only(start: 15.5.w),
               child: SvgPicture.asset(loginOptionsDataModel.optionIcon),
             ),
             SpaceWidget(

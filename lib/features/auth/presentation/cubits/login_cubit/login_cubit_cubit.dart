@@ -2,10 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/features/auth/data/models/login_options_data_model.dart';
 import 'package:meta/meta.dart';
-
 part 'login_cubit_state.dart';
 
-class LoginCubit extends Cubit<LoginCubitState> {
+class LoginCubit extends Cubit<LoginCubitState> 
+{
   LoginCubit() : super(LoginCubitInitial());
 
   static LoginCubit get(context) => BlocProvider.of(context);
