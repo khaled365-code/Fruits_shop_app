@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
@@ -58,18 +59,24 @@ class LoginCubit extends Cubit<LoginCubitState> {
     );
   }
 
-  void onLoginPressedAction(BuildContext context) 
-  {
-     if (loginFormKey.currentState!.validate())
-      {
-     loginFormKey.currentState!.save();
+  void onLoginPressedAction(BuildContext context) {
+    if (loginFormKey.currentState!.validate()) {
+      loginFormKey.currentState!.save();
       loginWithEmailAndPasswordFun(
-        email: LoginCubit.get(context) .emialController .text,
-        password: LoginCubit.get(context) .passController .text,
+        email: LoginCubit.get(context).emialController.text,
+        password: LoginCubit.get(context).passController.text,
       );
-    } else 
-    {
+    } else {
       changeLoginFormValidateMode();
     }
+  }
+
+  loginWithGoogleFun() async {
+    emit(LoginLoadingState());
+    final result = await authRepo.loginWithGoogle();
+    result.fold(
+      (failure) => emit(LoginFailureState(message: failure.message)),
+      (userData) => emit(LoginSuccessState(userEntity: userData)),
+    );
   }
 }

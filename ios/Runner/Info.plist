@@ -4,6 +4,8 @@
 	<dict>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>GIDClientID</key>
+        <string>1022141928653-ggrk7k8ko25jc78f729urr5h8irvsogk.apps.googleusercontent.com</string>
 		<key>CFBundleDisplayName</key>
 		<string>Fruits Shop</string>
 		<key>CFBundleExecutable</key>
@@ -28,6 +30,22 @@
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
+		<!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
+        <!-- Google Sign-in Section -->
+       <key>CFBundleURLTypes</key>
+       <array>
+	        <dict>
+		           <key>CFBundleTypeRole</key>
+		           <string>Editor</string>
+		           <key>CFBundleURLSchemes</key>
+		           <array>
+			                <!-- TODO Replace this value: -->
+			                <!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+			                <string>com.googleusercontent.apps.1022141928653-ggrk7k8ko25jc78f729urr5h8irvsogk</string>
+		           </array>
+	        </dict>
+        </array>
+        <!-- End of the Google Sign-in Section -->
 		<key>UISupportedInterfaceOrientations</key>
 		<key>CFBundleLocalizations</key>
         <array>

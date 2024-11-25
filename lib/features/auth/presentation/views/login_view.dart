@@ -96,6 +96,7 @@ class LoginView extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             top: index != 0 ? 16.h : 0),
                                         child: LoginOptionContainer(
+                                          index: index,
                                           loginOptionsDataModel:
                                               LoginCubit.get(context)
                                                   .loginOptionsDataList[index],
