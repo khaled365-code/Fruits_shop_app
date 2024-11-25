@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_outlined_text_field.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentation/cubits/login_cubit/login_cubit_cubit.dart';
 
 class EmailLoginTextField extends StatelessWidget {
   const EmailLoginTextField({
@@ -9,10 +10,24 @@ class EmailLoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomOutlinedTextField(
-      controller: TextEditingController(),
+      controller: LoginCubit.get(context).emialController,
       hintText: 'البريد الإلكتروني',
       keyboardType: TextInputType.emailAddress,
       maxLines: 1,
+      validator: (value)
+      {
+        if(value!.isEmpty)
+        {
+          return 'من فضلك ادخل البريد الإلكتروني';
+        }
+        return null;
+      },
+      onFieldSubmitted: (value)
+      {
+        LoginCubit.get(context).onLoginPressedAction(context);
+      },
     );
   }
+
+  
 }

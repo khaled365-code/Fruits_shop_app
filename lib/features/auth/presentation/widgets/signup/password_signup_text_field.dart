@@ -16,15 +16,14 @@ class SignupPasswordTextField extends StatelessWidget {
       obsecureText: SignupCubit.get(context).passwordObsecureText,
       controller: SignupCubit.get(context).signupPasswordController,
       hintText: 'كلمة المرور',
-      validator: (value) 
-      {
+      validator: (value) {
         if (value!.isEmpty) {
-          return 'ادخل كلمة المرور';
+          return 'يجب ادخال كلمة المرور';
         }
         return null;
       },
       suffixcon: Padding(
-        padding: EdgeInsetsDirectional.only(end: 33.w),
+        padding: EdgeInsetsDirectional.only(end: 31.w),
         child: GestureDetector(
           onTap: () {
             SignupCubit.get(context).changePasswordEyeShape();
@@ -35,6 +34,9 @@ class SignupPasswordTextField extends StatelessWidget {
           ),
         ),
       ),
+      onFieldSubmitted: (value) {
+        SignupCubit.get(context).onSignupPressedAction(context);
+      },
     );
   }
 }

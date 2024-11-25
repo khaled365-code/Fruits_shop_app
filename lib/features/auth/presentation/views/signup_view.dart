@@ -31,7 +31,7 @@ class SignupView extends StatelessWidget {
         if (state is SignupSuccessState) {
           buildScaffoldMessangerFun(
             context: context,
-            title: 'تم التسجيل بنجاح الرجاء تسجيل الدخول الأن',
+            title: 'تم انشاء الحساب بنجاح الرجاء تسجيل دخول الان',
           );
           Navigator.pop(context);
         }
@@ -46,8 +46,7 @@ class SignupView extends StatelessWidget {
                 slivers: [
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.only(
-                          top: 24.h, end: 17.w, start: 16.w),
+                      padding: EdgeInsetsDirectional.only( top: 24.h, end: 17.w, start: 16.w),
                       child: Form(
                         key: SignupCubit.get(context).signupFormKey,
                         autovalidateMode:
@@ -76,42 +75,9 @@ class SignupView extends StatelessWidget {
                               height: 30,
                             ),
                             SharedButton(
-                                onButtonPressed: () async {
-                                  if (SignupCubit.get(context)
-                                      .signupFormKey
-                                      .currentState!
-                                      .validate()) {
-                                    SignupCubit.get(context)
-                                        .signupFormKey
-                                        .currentState!
-                                        .save();
-
-                                    if (SignupCubit.get(context)
-                                            .termsAndConditionsIsChecked ==
-                                        false) {
-                                      buildScaffoldMessangerFun(
-                                        context: context,
-                                        title:
-                                            'يجب عليك الموافقه علي الشروط والاحكام',
-                                        isError: true,
-                                      );
-                                    } else {
-                                      SignupCubit.get(context)
-                                          .createUserWithEmail(
-                                              email: SignupCubit.get(context)
-                                                  .signupEmailController
-                                                  .text,
-                                              name: SignupCubit.get(context)
-                                                  .signupNameController
-                                                  .text,
-                                              password: SignupCubit.get(context)
-                                                  .signupPasswordController
-                                                  .text);
-                                    }
-                                  } else {
-                                    SignupCubit.get(context)
-                                        .changeSignUpValidateMode();
-                                  }
+                                onButtonPressed: () async 
+                                {
+                                  SignupCubit.get(context).onSignupPressedAction(context);
                                 },
                                 buttonText: 'إنشاء حساب جديد'),
                             SpaceWidget(
@@ -131,4 +97,6 @@ class SignupView extends StatelessWidget {
       ),
     );
   }
+
+  
 }

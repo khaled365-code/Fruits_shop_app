@@ -8,8 +8,6 @@ import 'package:get_it/get_it.dart';
 final serviceLocator = GetIt.instance;
 
 setUpLocator() {
-  
-
   serviceLocator.registerLazySingleton(
     () => FirebaseAuthService(),
   );
@@ -23,8 +21,8 @@ setUpLocator() {
     () => SignupCubit(authRepo: serviceLocator.get<AuthRepoImplementation>()),
   );
 
-   serviceLocator.registerFactory(
-    () => LoginCubit(),
+  serviceLocator.registerFactory(
+    () => LoginCubit(authRepo: serviceLocator.get<AuthRepoImplementation>()),
   );
 
   serviceLocator.registerFactory(

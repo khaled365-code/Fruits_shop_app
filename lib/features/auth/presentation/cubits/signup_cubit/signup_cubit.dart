@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_e_commerce_app/core/commons/helper_functions.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/entities/user_entity.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 part 'signup_state.dart';
@@ -64,5 +65,28 @@ class SignupCubit extends Cubit<SignupState>
         emit(SignupSuccessState(userEntity: user));
       },
     );
+  }
+
+   void onSignupPressedAction(BuildContext context) 
+   {
+     if (signupFormKey.currentState!.validate()) 
+     {
+      signupFormKey.currentState!.save();
+      if (termsAndConditionsIsChecked==false) 
+      {
+        buildScaffoldMessangerFun(
+          context: context,
+          title: 'يجب عليك الموافقه علي الشروط والاحكام',
+          isError: true,
+        );
+      } else {
+       createUserWithEmail(
+                email: SignupCubit.get(context).signupEmailController.text,
+                name: SignupCubit.get(context).signupNameController.text,
+                password: SignupCubit.get(context).signupPasswordController.text);
+      }
+    } else {
+      changeSignUpValidateMode();
+    }
   }
 }

@@ -13,13 +13,17 @@ class SignupEmailTextField extends StatelessWidget {
       maxLines: 1,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'ادخل البريد الالكتروني';
+          return 'يجب ادخال البريد الإلكتروني';
         }
         return null;
       },
       keyboardType: TextInputType.emailAddress,
       controller: SignupCubit.get(context).signupEmailController,
       hintText: 'البريد الإلكتروني',
+      onFieldSubmitted: (value)
+      {
+        SignupCubit.get(context).onSignupPressedAction(context);
+      },
     );
   }
 }

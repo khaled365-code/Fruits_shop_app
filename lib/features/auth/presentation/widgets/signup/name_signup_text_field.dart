@@ -15,7 +15,7 @@ class SignupNameTextField extends StatelessWidget {
       {
         if(value!.isEmpty)
         {
-          return 'ادخل الاسم كامل';
+          return 'يجب ادخال الاسم بالكامل';
         }
         else
         {
@@ -25,6 +25,10 @@ class SignupNameTextField extends StatelessWidget {
       keyboardType: TextInputType.name,
       controller: SignupCubit.get(context).signupNameController,
       hintText: 'الاسم كامل',
+      onFieldSubmitted: (value)
+      {
+        SignupCubit.get(context).onSignupPressedAction(context);
+      },
     );
   }
 }
