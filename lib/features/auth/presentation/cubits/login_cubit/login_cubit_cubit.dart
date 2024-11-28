@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
@@ -78,5 +77,12 @@ class LoginCubit extends Cubit<LoginCubitState> {
       (failure) => emit(LoginFailureState(message: failure.message)),
       (userData) => emit(LoginSuccessState(userEntity: userData)),
     );
+  }
+
+  loginWithFacebookFun() async {
+    emit(LoginLoadingState());
+    final result = await authRepo.signInWithFacebook();
+    result.fold((failure) => emit(LoginFailureState(message: failure.message)),
+        (r) => emit(LoginSuccessState(userEntity: r)));
   }
 }

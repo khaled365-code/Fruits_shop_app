@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_e_commerce_app/core/errors/exceptions.dart';
@@ -52,6 +51,18 @@ class AuthRepoImplementation extends AuthRepo {
       return Right(UserDataModel.fromFirebaseAuth(userData));
     } catch (e) {
       log("failure with AuthRepoImplementation.loginWithGoogle and the error is $e");
+      return Left(
+          ServerFailure(message: 'حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      final User userData = await firebaseAuthService.signInWithFacebook();
+      return Right(UserDataModel.fromFirebaseAuth(userData));
+    } catch (e) {
+      log('failure with AuthRepoImplementation.signInWithFacebook and the error is $e');
       return Left(
           ServerFailure(message: 'حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقًا'));
     }

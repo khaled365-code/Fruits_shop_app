@@ -20,6 +20,9 @@ class LoginOptionContainer extends StatelessWidget {
           case 0:
             LoginCubit.get(context).loginWithGoogleFun();
             break;
+          case 2:
+            LoginCubit.get(context).loginWithFacebookFun();
+            break;
         }
       },
       child: Container(
